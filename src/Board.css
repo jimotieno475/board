@@ -11,8 +11,8 @@
   overflow: hidden; /* Hide overflow for rounded corners */
   position: relative;
   background-color: #d1a580; /* Board background color */
-  background-image: url('https://www.freepik.com/free-vector/realistic-brown-wooden-gallery-frame_38414854.htm#query=wood%20border&position=0&from_view=keyword&track=ais&uuid=bbb11f1a-1f06-444c-a3e2-41d322927bc6');
-  background-size: cover; /* Adjust background size */
+  background-image: url('../src/images/wallpaperflare.com_wallpaper.jpg');
+  background-size:auto; /* Adjust background size */
 }
 
 /* Board row */
