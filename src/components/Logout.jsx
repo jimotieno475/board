@@ -23,7 +23,7 @@ function Logout({ user, setUser }) {
           <>
 
 
-            <Link to="/signup" className="link">Signup</Link>
+            
             <Link to="/login" className="link">Login</Link>
           </>
         )}

@@ -39,7 +39,7 @@ function Login({ setUser }) {
             </div>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
-                Username
+                Email
               </label>
               <input
                 type="text"
