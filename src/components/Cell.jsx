@@ -10,7 +10,7 @@ function Cell({ isDark, rowIndex, colIndex, onPieceDrop, boardState, updateBoard
   };
 
   const isWhitePieceVisible = isDark && rowIndex >= 0 && rowIndex < 3 && colIndex < 12;
-  const isBlackPieceVisible = !isDark && rowIndex >= 5 && rowIndex < 16 && colIndex < 12;
+  const isBlackPieceVisible = isDark && rowIndex >= 5 && rowIndex < 16 && colIndex < 12;
 
   const [, drop] = useDrop({
     accept: ItemTypes.PIECE,
