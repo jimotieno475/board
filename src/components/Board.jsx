@@ -6,6 +6,18 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import Piece from "./Piece";
 
 function Board() {
+
+  useEffect(()=> {
+    fetch('/start_game', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({board})
+    }).then(res => res.json()).then((data) => {
+      console.log(data)
+
+    })
+  }, [])
+  
   const [board, setBoard] = useState(Array(8).fill(null).map(() => Array(8).fill(null)))
   useEffect(()=> {
     fetch('/start_game', {
