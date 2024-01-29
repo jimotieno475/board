@@ -6,7 +6,6 @@ import Landing from './Landing';
 export default function Ligings() {
   return (
     <div className="container">
-      <h2>WELCOME TO THE 4TH WALL CHAKERS GAME</h2>
       <Link to="/login" className="link">
         Login
       </Link>

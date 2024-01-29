@@ -1,18 +1,26 @@
-.logout{
-    text-align: center;
-    color: red;
-  }
+.logout {
+  text-align: center;
+  color: red;
+  font-size: 18px; /* Adjust font size as needed */
+  margin-bottom: 20px; /* Add margin for separation from other elements */
+}
+
+/* Styling for the link element */
 .link {
-    margin: 10px;
-    text-decoration: none;
-    color: #fff;
-    padding-top: 20;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: #007bff;
-    transition: background-color 0.3s ease;
-  }
-  
-  .link:hover {
-    background-color: #0056b3;
-  }
+  margin: 10px;
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #007bff;
+  transition: background-color 0.3s ease;
+  display: inline-block; /* Ensures the padding works correctly */
+  font-weight: bold; /* Make the text bold */
+}
+
+/* Hover effect for the link */
+.link:hover {
+  background-color: #0056b3;
+  color: #fff; /* Change text color on hover */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle box-shadow on hover */
+}

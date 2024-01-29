@@ -7,6 +7,8 @@ function Login({ setUser }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log("Submitting data:", { username, password });
+  
     fetch("/login", {
       method: "POST",
       headers: {

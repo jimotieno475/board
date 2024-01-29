@@ -1,54 +1,47 @@
-body{
-    background-color: green;
+.scores-container {
+  display:inline-flex;
+  align-items:center;
+  justify-content: center;
+  border: 2px solid #a86941;
+  border-radius: 8px;
+  padding: 3px;
+  background-color: #d1a580;
+  margin-bottom: 2px;
+  top: 20%; /* Place at the vertical center */
+  left: 20%; /* Place at the horizontal center */
+  transform: translate(400%, 0%); /* Adjust for centering */
 }
 
-/* Scores container */
-/* Wooden box styling for scores container */
-.scores-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #a86941; /* Wooden color for border */
-    border-radius: 8px; /* Rounded corners */
-    padding: 16px; /* Add padding to create space between the content and the border */
-    background-color: #d1a580; /* Background color */
-    margin-bottom: 0px; /* Adjust spacing */
-  }
-  
-  /* Scores box styling */
-  .scores-box {
-    padding: 16px;
-    margin-right: 20px; /* Adjust spacing */
-  }
-  
-  /* Score title styling */
-  .score-title {
-    display: inline-block;
-    margin-bottom: 8px; /* Adjust spacing between title and scores */
-    padding: 8px 16px; /* Adjust padding as needed */
-    border: 2px solid #a86941; /* Wooden color for border */
-    border-radius: 8px; /* Rounded corners */
-    background-color: #d1a580; /* Background color */
-    position: relative;
-  }
-  
-  /* Player scores styling */
-  .player-scores {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Individual player score styling */
-  .player-score {
-    margin-bottom: 8px; /* Adjust spacing between player scores */
-  }
-  
-  .player-score span {
-    display: inline-block;
-    padding: 8px;
-    background-color: #a86941; /* Wooden color */
-    border-radius: 8px; /* Rounded corners */
-    color: #fff; /* Text color */
-  }
-  
+.scores-box {
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.score-title {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 10px 16px;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  background-color: #d1a580;
+  position: relative;
+}
+
+.player-scores {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-score {
+  margin-bottom: 6px;
+}
+
+.player-score span {
+  display: inline-block;
+  padding: 8px;
+  background-color: #a86941;
+  border-radius: 8px;
+  color: #fff;
+}
+
   
