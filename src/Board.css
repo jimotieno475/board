@@ -1,0 +1,88 @@
+/* body{
+  background-color: green;
+} */
+
+/* Board container */
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px; /* Rounded corners for the board */
+  overflow: hidden; /* Hide overflow for rounded corners */
+  position: relative;
+  background-color: #d1a580; /* Board background color */
+  background-image: url('https://www.freepik.com/free-vector/realistic-brown-wooden-gallery-frame_38414854.htm#query=wood%20border&position=0&from_view=keyword&track=ais&uuid=bbb11f1a-1f06-444c-a3e2-41d322927bc6');
+  background-size: cover; /* Adjust background size */
+}
+
+/* Board row */
+.board-row {
+  display: flex;
+}
+
+/* Chessboard cell */
+.cell {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000;
+  position: relative;
+  font-size: 1.5rem; /* Adjust font size for chess piece symbols */
+}
+
+/* Dark square color */
+.cell.dark {
+  background-color: #8b4513;
+  position: relative; /* Ensure position for pseudo-elements */
+}
+
+/* Wooden border with image */
+.board::before,
+.board::after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: calc(100% + 2px); /* Adjust for the border */
+  background-size: cover;
+  z-index: -1; /* Move behind the board */
+}
+
+.board::before {
+  background-image: url('https://www.example.com/wooden-border-top.png'); /* Replace with actual image URL */
+  top: -10px; /* Lift up the top edge slightly */
+}
+
+.board::after {
+  background-image: url(https://www.freepik.com/free-photo/vintage-wooden-square-frame-painting-picture-isolated-white-background_17245948.htm#from_view=detail_alsolike); /* Replace with actual image URL */
+  bottom: -10px; /* Extend beyond the bottom edge slightly */
+}
+
+/* Decorative design on the board */
+.cell.dark::before,
+.cell.dark::after {
+  content: "";
+  position: absolute;
+  background-color: #a86941; /* Wooden color */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  z-index: -1; /* Move behind the board */
+}
+
+.cell.dark::before {
+  top: -10px;
+  left: -10px;
+}
+
+.cell.dark::after {
+  bottom: -10px;
+  right: -10px;
+}
+
+/* Optional: Highlight current move or selected piece */
+.cell.selected {
+  background-color: #ffd700; /* Highlight color */
+}
+
