@@ -7,7 +7,16 @@ import Piece from "./Piece";
 
 function Board() {
   const [board, setBoard] = useState(Array(8).fill(null).map(() => Array(8).fill(null)))
+  useEffect(()=> {
+    fetch('/start_game', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({board})
+    }).then(res => res.json()).then((data) => {
+      console.log(data)
 
+    })
+  }, [])
   const handlePieceDrop = (color, rowIndex, colIndex) => {
     // Handle the drop event logic here, e.g., updating the position of the piece.
     console.log(
