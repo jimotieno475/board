@@ -14,16 +14,14 @@ function Logout({ user, setUser }) {
   return (
     <header className="logout">
       <div>
-        <Link to="/" className="link">Home</Link>
+        {/* <Link to="/" className="link">Home</Link> */}
       </div>
-      <div className="done">
+      <div>
         {user ? (
           <button onClick={handleLogoutClick}>Logout</button>
         ) : (
           <>
-
-
-            
+          <Link to="/" className="link">Home</Link>
             <Link to="/login" className="link">Login</Link>
           </>
         )}

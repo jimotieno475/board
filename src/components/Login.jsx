@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function Login({ setUser }) {
   const [username, setUsername] = useState("");
-  const [email,SetEmail]=useState("")
+//   const [email,SetEmail]=useState("")
   const [password, setPassword] = useState("");
 
   function handleSubmit(e) {
@@ -12,7 +12,7 @@ function Login({ setUser }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username,email, password }),
+      body: JSON.stringify({ username, password }),
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
@@ -37,7 +37,7 @@ function Login({ setUser }) {
                 required
               />
             </div>
-            <div className="mb-3">
+            {/* <div className="mb-3">
               <label htmlFor="email" className="form-label">
                 Email
               </label>
@@ -48,7 +48,7 @@ function Login({ setUser }) {
                 onChange={(e) => SetEmail(e.target.value)}
                 required
               />
-            </div>
+            </div> */}
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
                 Password
