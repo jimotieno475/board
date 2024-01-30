@@ -9,7 +9,6 @@ export default function Ligings() {
       <Link to="/login" className="link">
         Login
       </Link>
-      <Link to="/signup" className="link">Signup</Link>
       <Link to="/logout" className="link">
         Logout
       </Link>

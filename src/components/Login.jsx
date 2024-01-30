@@ -1,83 +1,59 @@
 import React, { useState } from "react";
 
-function Login() {
-  const [user, setUser] = useState("");
+function Login({ setUser }) {
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+//   const [email,setEmail]=useState("")
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    fetch("/players", {
+    fetch("/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, email, password }),
-    })
-      .then((r) => {
-        if (r.ok) {
-          return r.json().then((user) => setUser(user));
-        } else {
-          throw new Error("Failed to register");
-        }
-      })
-      .catch((error) => {
-        console.error("Registration error:", error);
-        setError("Failed to register. Please try again.");
-      });
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
   }
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label htmlFor="username" className="form-label">
-                Username
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="username"
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label">
-                Email
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="email"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="password" className="form-label">
-                Password
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <button type="submit" className="btn btn-primary">
-              Register
-            </button>
-            {error && <p className="text-danger">{error}</p>}
-          </form>
-        </div>
-      </div>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <h1>Sign Up</h1>
+        <label htmlFor="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          autoComplete="off"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        {/* <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          autoComplete="current-email"
+        /> */}
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          autoComplete="current-password"
+        />
+
+        <button type="submit">Sign Up</button>
+      </form>
     </div>
   );
 }
