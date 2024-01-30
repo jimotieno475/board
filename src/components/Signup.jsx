@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router";
 
 function SignUp() {
   const [user, setUser] = useState("");
@@ -7,7 +6,6 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const history=useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -22,7 +20,7 @@ function SignUp() {
       .then((r) => {
         if (r.ok) {
           // return r.json().then((user) => setUser(user));
-          history.push('/ligings');
+          window.location.href = '/ligings';
         } else {
           throw new Error("Failed to register");
         }
