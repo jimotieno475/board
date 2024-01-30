@@ -1,25 +1,33 @@
 import React, { useState } from "react";
 
-function Login({ setUser }) {
+function Login() {
+  const [user, setUser] = useState("");
   const [username, setUsername] = useState("");
-//   const [email,SetEmail]=useState("")
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("Submitting data:", { username, password });
-  
-    fetch("/login", {
+
+    fetch("/players", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
+      body: JSON.stringify({ username, email, password }),
+    })
+      .then((r) => {
+        if (r.ok) {
+          return r.json().then((user) => setUser(user));
+        } else {
+          throw new Error("Failed to register");
+        }
+      })
+      .catch((error) => {
+        console.error("Registration error:", error);
+        setError("Failed to register. Please try again.");
+      });
   }
 
   return (
@@ -39,7 +47,7 @@ function Login({ setUser }) {
                 required
               />
             </div>
-            {/* <div className="mb-3">
+            <div className="mb-3">
               <label htmlFor="email" className="form-label">
                 Email
               </label>
@@ -47,10 +55,10 @@ function Login({ setUser }) {
                 type="text"
                 className="form-control"
                 id="email"
-                onChange={(e) => SetEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
-            </div> */}
+            </div>
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
                 Password
@@ -64,13 +72,14 @@ function Login({ setUser }) {
               />
             </div>
             <button type="submit" className="btn btn-primary">
-              Login
+              Register
             </button>
+            {error && <p className="text-danger">{error}</p>}
           </form>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default Login;
