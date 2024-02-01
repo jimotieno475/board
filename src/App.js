@@ -4,15 +4,12 @@ import Landing from './components/Landing';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import SignUp from './components/Signup';
-import Sining from './components/SiningPage';
-import { useState } from 'react';
 
 function App() {
 
   return (
     <Router>
       <Routes>
-      <Route exact path='/' element={<Sining/>} />
       <Route exact path='/landing' element={<Landing />} />
         <Route path='/home' element={<Home />} />
         <Route path='/login' element={<Login  />}/>

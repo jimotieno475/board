@@ -23,7 +23,7 @@ function SignUp() {
       .then((r) => {
         if (r.ok) {
           // return r.json().then((user) => setUser(user));
-          navigate('/login');
+          navigate('/home');
         } else {
           throw new Error("Failed to register");
         }

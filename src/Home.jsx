@@ -8,7 +8,7 @@ function Home({userid}) {
   return (
     <div>
       <Scores/>
-      <Board userid={userid} />
+      <Board />
     </div>
   );
 }
