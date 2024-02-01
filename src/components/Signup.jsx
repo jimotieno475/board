@@ -1,26 +1,29 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
+import { useNavigate } from "react-router-dom";
+
+
 
 function SignUp() {
   const [user, setUser] = useState("");
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); 
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("/players", {
+    fetch("/user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({ username, password }),
     })
       .then((r) => {
         if (r.ok) {
           // return r.json().then((user) => setUser(user));
-          window.location.href = '/ligings';
+          navigate('/home');
         } else {
           throw new Error("Failed to register");
         }
@@ -48,18 +51,8 @@ function SignUp() {
                 required
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label">
-                Email
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="email"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
+            
+            
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
                 Password

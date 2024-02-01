@@ -8,9 +8,7 @@ export default function Ligings() {
       <Link to="/login" className="link">
         Login
       </Link>
-      <Link to="/logout" className="link">
-        Logout
-      </Link>
+     
     </div>
   );
 }
