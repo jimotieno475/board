@@ -18,7 +18,19 @@ function Board() {
     })
   }, [])
   
-  const [board, setBoard] = useState(Array(8).fill(null).map(() => Array(8).fill(null)))
+  // const [board, setBoard] = useState(Array(8).fill(null).map(() => Array(8).fill(null)))
+  const [board, setBoard] = useState(
+    [
+      [" ", "W", " ", "W", " ", "W", " ", "W"],
+      ["W", " ", "W", " ", "W", " ", "W", " "],
+      [" ", "W", " ", "W", " ", "W", " ", "W"],
+      [" ", " ", " ", " ", " ", " ", " ", " "],
+      [" ", " ", " ", " ", " ", " ", " ", " "],
+      ["B", " ", "B", " ", "B", " ", "B", " "],
+      [" ", "B", " ", "B", " ", "B", " ", "B"],
+      ["B", " ", "B", " ", "B", " ", "B", " "],
+  ]
+  )
   useEffect(()=> {
     fetch('/start_game', {
       method: 'POST',
@@ -37,10 +49,11 @@ function Board() {
 
     setBoard(prevBoard => {
       // Create a deep copy of the board
+      console.log(board[rowIndex][colIndex])
       const newBoard = prevBoard.map(row => [...row]);
 
       // Update the cell with the new color
-      newBoard[rowIndex][colIndex] = color;
+      newBoard[rowIndex][colIndex] = 'W';
 
       // Return the updated board
       return newBoard;

@@ -1,11 +1,12 @@
-// Login.js
-
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
+    // const [userid, setUserId]= useState('');
+    const navigate = useNavigate();
+      
     const handleLogin = async () => {
         const formData = {
             username: username,
@@ -23,7 +24,8 @@ const Login = () => {
 
             if (response.ok) {
                 // Redirect to the home page or perform any other action on successful login
-                window.location.href = '/landing';
+                // setUserId(formData.id)
+                navigate("/home");
             } else {
                 // Handle the case where login failed
                 const data = await response.json();
@@ -58,7 +60,7 @@ const Login = () => {
                     required
                 />
 
-                <button type="button" onClick={handleLogin}>
+                <button type="submit" onClick={handleLogin}>
                     Login
                 </button>
             </form>

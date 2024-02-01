@@ -20,7 +20,7 @@ const cellStyle = {
   
   return (
     <div  onClick={pieceClick} className={`cell ${isDark ? 'dark' : ''}`} style={{...cellStyle, position:"relative"}} >
-      <SinglePiece piece={piece}/>
+      
     </div>
   );
 }
