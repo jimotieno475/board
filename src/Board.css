@@ -1,7 +1,3 @@
-/* body{
-  background-color: green;
-} */
-
 /* Board container */
 .board {
   display: flex;
@@ -12,11 +8,11 @@
   position: relative;
   background-color: #d1a580; /* Board background color */
   background-image: url('../src/images/wallpaperflare.com_wallpaper.jpg');
-  background-size:auto; /* Adjust background size */
+  background-size: auto; /* Adjust background size */
 }
 
 /* Board row */
-.board-row {
+.row {
   display: flex;
 }
 
@@ -85,4 +81,3 @@
 .cell.selected {
   background-color: #ffd700; /* Highlight color */
 }
-
