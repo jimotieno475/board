@@ -21,7 +21,7 @@ function Cell({ isDark, rowIndex, colIndex, board, setBoard, piece }) {
           x: colIndex,
           y: rowIndex,
         },
-        id: 8,
+        id: 3,
       });
       return;
     }
@@ -51,13 +51,13 @@ function Cell({ isDark, rowIndex, colIndex, board, setBoard, piece }) {
     }
 
     try {
-      const res = await fetch('/board/valid-moves', {
+      const res = await fetch('/valid-moves', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          id: 8,
+          id: 3,
           from: {
             x: colIndex,
             y: rowIndex,

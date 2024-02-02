@@ -23,7 +23,7 @@ function Board() {
     // }
     
     try {
-      const response = await fetch(`board/8`);
+      const response = await fetch(`board/3`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

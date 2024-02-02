@@ -1,15 +1,36 @@
-//signup.js
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
-
 function SignUp() {
-  //const [user, setUser] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+
+  const formStyle = {
+    maxWidth: "400px", // Example styling properties
+    margin: "0 auto",
+  };
+
+  const inputStyle = {
+    width: "100%",
+    marginBottom: "15px",
+    padding: "10px",
+    boxSizing: "border-box",
+  };
+
+  const buttonStyle = {
+    width: "100%",
+    padding: "10px",
+    backgroundColor: "#007bff",
+    color: "#fff",
+    border: "none",
+    cursor: "pointer",
+  };
+
+  const errorStyle = {
+    color: "red",
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -23,8 +44,7 @@ function SignUp() {
     })
       .then((r) => {
         if (r.ok) {
-          // return r.json().then((user) => setUser(user));
-          navigate('/login');
+          navigate("/login");
         } else {
           throw new Error("Failed to register");
         }
@@ -36,11 +56,11 @@ function SignUp() {
   }
 
   return (
-    <div className="container mt-5">
+    <div style={formStyle} className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
           <form onSubmit={handleSubmit}>
-            <div className="mb-3">
+            <div style={inputStyle} className="mb-3">
               <label htmlFor="username" className="form-label">
                 Username
               </label>
@@ -52,7 +72,7 @@ function SignUp() {
                 required
               />
             </div>
-            <div className="mb-3">
+            <div style={inputStyle} className="mb-3">
               <label htmlFor="password" className="form-label">
                 Password
               </label>
@@ -64,10 +84,10 @@ function SignUp() {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button style={buttonStyle} type="submit">
               Register
             </button>
-            {error && <p className="text-danger">{error}</p>}
+            {error && <p style={errorStyle}>{error}</p>}
           </form>
         </div>
       </div>
