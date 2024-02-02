@@ -10,7 +10,8 @@ function App() {
       <APPCONTEXT.Provider value={{ }}>
         <Router>
           <Routes>
-            <Route exact path='/' element={<SignUp />} />
+            <Route exact path='/' element={<Landing />} />
+            <Route path='/signup' element={<SignUp />} />
             <Route path='/landing' element={<Landing />} />
             <Route path='/home' element={<Home />} />
             <Route path='/login' element={<Login />} />
