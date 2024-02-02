@@ -1,16 +1,17 @@
 // Board.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import Cell from "./Cell";
 import Piece from "./Piece";
 import useaxios from "./useaxios";
+import { APPCONTEXT } from "./APPContext";
 
 import { useNavigate } from "react-router-dom";
 
 function Board() {
-  const [userid, setUserId] = useState(null);
+  const { userId } = useContext(APPCONTEXT);
   const request = useaxios();
   const navigate = useNavigate();
-
+  
   const [board, setBoard] = useState([
     [" ", "w", " ", "W", " ", "W", " ", "W"],
     ["W", " ", "W", " ", "W", " ", "W", " "],
@@ -21,19 +22,19 @@ function Board() {
     [" ", "B", " ", "B", " ", "B", " ", "B"],
     ["B", " ", "B", " ", "B", " ", "B", " "],
   ]);
-
   useEffect(() => {
     init();
-  }, []);
+  },);
 
   const init = async () => {
-    if (!userid) {
+    if (!userId) {
       navigate("/login");
       return;
     }
     let res = await request({
-      url: `board/${userid}`,
+      url: `board/1`,
       method: "GET",
+      
     });
     if (res === "error") {
       return;

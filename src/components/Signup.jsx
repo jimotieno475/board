@@ -1,10 +1,11 @@
+//signup.js
 import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 
 
 
 function SignUp() {
-  const [user, setUser] = useState("");
+  //const [user, setUser] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -23,7 +24,7 @@ function SignUp() {
       .then((r) => {
         if (r.ok) {
           // return r.json().then((user) => setUser(user));
-          navigate('/home');
+          navigate('/login');
         } else {
           throw new Error("Failed to register");
         }
@@ -51,8 +52,6 @@ function SignUp() {
                 required
               />
             </div>
-            
-            
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
                 Password

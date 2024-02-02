@@ -1,30 +1,30 @@
-const baseUrl="http://127.0.0.1:5555"
+import axios from 'axios';
 
-const useaxios=()=>{
+const baseUrl = "http://127.0.0.1:5555";
 
-    const request=async({
-        url="login",
-        data={},
-        headers={},
-        params={},
-        method=""
-    })=>{
-        try {
-            let res=useaxios({
-                url:`${baseUrl}/${url}`,
-                method:method,
-                data:data,
-                headers: {...headers, "Content-Type": "application/json"},
-                params:params
-            })
-            return res.data
-        } catch (e) {
-            return "error"
-        }
+const useaxios = () => {
+  const request = async ({
+    url = "/",
+    data = {},
+    headers = {},
+    params = {},
+    method = ""
+  }) => {
+    try {
+      const res = await axios({
+        url: `${baseUrl}/${url}`,
+        method: method,
+        data: data,
+        headers: { ...headers, "Content-Type": "application/json","Access-Control-Allow-Origin": "http://localhost:3000", },
+        params: params
+      });
+      return res.data;
+    } catch (e) {
+      return "error";
     }
+  };
 
-    return request
+  return request;
+};
 
-}
-
-export default useaxios
+export default useaxios;
