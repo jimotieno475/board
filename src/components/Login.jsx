@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
-import { APPCONTEXT } from './APPContext';
+import React, { useState} from 'react';
+// import { APPCONTEXT } from './APPContext';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({setUserId}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { userId,setUserId } = useContext(APPCONTEXT);
+  // const { setUserId } = useContext(APPCONTEXT);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -29,12 +29,11 @@ const Login = () => {
         return "";
       }
       console.log('User ID:',data.id);
-      // setUserId(data.id);
-      console.log(userId)
+      setUserId(data.id);
       console.log(data)
-      navigate("/home")
+      navigate("/board")
     } catch (error) {
-      console.error('Login error:', error);
+      console.log('Login error:', error);
     }
   };
 

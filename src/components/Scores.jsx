@@ -18,5 +18,4 @@ function Scores() {
     </div>
   );
 }
-
 export default Scores;

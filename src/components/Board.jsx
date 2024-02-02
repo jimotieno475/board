@@ -1,41 +1,34 @@
-// Board.js
-import React, { useState, useEffect, useContext } from "react";
-import Cell from "./Cell";
-// import Piece from "./Piece";
-import "../Board.css"
-import { APPCONTEXT } from "./APPContext";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import Cell from './Cell';
+import { useNavigate } from 'react-router-dom';
 
-function Board() {
-  const { userId } = useContext(APPCONTEXT);
+function Board({ userId }) {
   const navigate = useNavigate();
-
   const [board, setBoard] = useState(Array.from({ length: 8 }, () => Array(8).fill(" ")));
 
   useEffect(() => {
-    init();
-  }, []);
-
-  const init = async () => {
-    // if (!userId) {
-    //   navigate("/login");
-    //   return;
-    // }
-    
-    try {
-      const response = await fetch(`board/8`);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+    const init = async () => {
+      if (!userId) {
+        navigate('/login');
+        return;
       }
 
-      const data = await response.json();
-      console.log((data))
-      setBoard(data);
-    } catch (error) {
-      console.error('Error fetching board:', error);
-    }
-  };
+      try {
+        const response = await fetch(`board/${userId}`);
 
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        setBoard(data);
+      } catch (error) {
+        console.error('Error fetching board:', error);
+      }
+    };
+
+    init();
+  }, [userId, navigate]);
   return (
     <div className="board">
       {board.map((row, rowIndex) => (

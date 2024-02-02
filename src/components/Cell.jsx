@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import '../Board.css';
-import { APPCONTEXT } from './APPContext';
+// import { APPCONTEXT } from './APPContext';
 
-function Cell({ isDark, rowIndex, colIndex, board, setBoard, piece }) {
+function Cell({ isDark, rowIndex, colIndex, board, setBoard, piece ,userId }) {
   const [validMoves, setValidMoves] = useState([]);
   const [from, setFrom] = useState();
-  const { userId } = useContext(APPCONTEXT);
+  // const { userId } = useContext(APPCONTEXT);
 
   const cellStyle = {
     backgroundColor: isDark ? '#8B4513' : '#FFE4B5',
@@ -21,7 +21,7 @@ function Cell({ isDark, rowIndex, colIndex, board, setBoard, piece }) {
           x: colIndex,
           y: rowIndex,
         },
-        id: 8,
+        id: userId,
       });
       return;
     }
@@ -51,13 +51,13 @@ function Cell({ isDark, rowIndex, colIndex, board, setBoard, piece }) {
     }
 
     try {
-      const res = await fetch('/board/valid-moves', {
+      const res = await fetch('/valid-moves', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          id: 8,
+          id: userId,
           from: {
             x: colIndex,
             y: rowIndex,
