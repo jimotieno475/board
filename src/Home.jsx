@@ -1,15 +1,15 @@
-import React from "react";
-// import { useEffect, useState } from 'react';
+
+import { useContext} from 'react';
 import Board from "./components/Board";
 import Scores from "./components/Scores";
-
+import { APPCONTEXT } from "./components/APPContext";
 
 function Home({userid}) {
-  
+  const { userId } = useContext(APPCONTEXT);
   return (
     <div>
       <Scores/>
-      <Board />
+      <Board userId/>
     </div>
   );
 }

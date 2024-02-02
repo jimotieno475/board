@@ -1,45 +1,39 @@
 // Board.js
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Cell from "./Cell";
-import Piece from "./Piece";
-import useaxios from "./useaxios";
+// import Piece from "./Piece";
+import "../Board.css"
 import { APPCONTEXT } from "./APPContext";
-
 import { useNavigate } from "react-router-dom";
 
 function Board() {
   const { userId } = useContext(APPCONTEXT);
-  const request = useaxios();
   const navigate = useNavigate();
-  
-  const [board, setBoard] = useState([
-    [" ", "w", " ", "W", " ", "W", " ", "W"],
-    ["W", " ", "W", " ", "W", " ", "W", " "],
-    [" ", "W", " ", "W", " ", "W", " ", "W"],
-    [" ", " ", " ", " ", " ", " ", " ", " "],
-    [" ", " ", " ", "", " ", " ", " ", " "],
-    ["B", " ", "B", " ", "B", " ", "B", " "],
-    [" ", "B", " ", "B", " ", "B", " ", "B"],
-    ["B", " ", "B", " ", "B", " ", "B", " "],
-  ]);
+
+  const [board, setBoard] = useState(Array.from({ length: 8 }, () => Array(8).fill(" ")));
+
   useEffect(() => {
     init();
-  },);
+  }, []);
 
   const init = async () => {
     // if (!userId) {
     //   navigate("/login");
     //   return;
     // }
-    let res = await request({
-      url: `board/1`,
-      method: "GET",
-      
-    });
-    if (res === "error") {
-      return;
+    
+    try {
+      const response = await fetch(`board/8`);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log((data))
+      setBoard(data);
+    } catch (error) {
+      console.error('Error fetching board:', error);
     }
-    setBoard(res.JSON);
   };
 
   return (
@@ -59,7 +53,7 @@ function Board() {
                 onPieceDrop={() => {}}
                 piece={board[rowIndex][colIndex]}
               >
-                {piece && <Piece color={piece} />}
+                {/* {piece && <Piece color={piece} />} */}
               </Cell>
             );
           })}
@@ -70,3 +64,4 @@ function Board() {
 }
 
 export default Board;
+

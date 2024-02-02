@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { setUserId } = useContext(APPCONTEXT);
+  const { userId,setUserId } = useContext(APPCONTEXT);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -29,7 +29,8 @@ const Login = () => {
         return "";
       }
       console.log('User ID:',data.id);
-      // setUserId(data.id);
+      setUserId(data.id);
+      console.log(userId)
       console.log(data)
       navigate("/home")
     } catch (error) {
