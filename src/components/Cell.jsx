@@ -1,12 +1,10 @@
 import React, { useState, useContext } from 'react';
 import '../Board.css';
 import { APPCONTEXT } from './APPContext';
-import useaxios from './useaxios';
 
 function Cell({ isDark, rowIndex, colIndex, board, setBoard, piece }) {
   const [validMoves, setValidMoves] = useState([]);
   const [from, setFrom] = useState();
-  const request = useaxios();
   const { userId } = useContext(APPCONTEXT);
 
   const cellStyle = {
@@ -23,26 +21,29 @@ function Cell({ isDark, rowIndex, colIndex, board, setBoard, piece }) {
           x: colIndex,
           y: rowIndex,
         },
-        id: userId,
+        id: 8,
       });
       return;
     }
 
     try {
       if (piece !== 'X') {
-        const res = await request({
-          url: 'board/move',
+        const res = await fetch('/board/move', {
           method: 'PUT',
-          data: {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
             from: from,
             to: {
               x: colIndex,
               y: rowIndex,
             },
-          },
+          }),
         });
 
-        setBoard(res?.board || board);
+        const data = await res.json();
+        setBoard(data?.board || board);
         setValidMoves([]);
       }
     } catch (error) {
@@ -50,24 +51,27 @@ function Cell({ isDark, rowIndex, colIndex, board, setBoard, piece }) {
     }
 
     try {
-      const res = await request({
-        url: 'board/valid-moves',
+      const res = await fetch('/board/valid-moves', {
         method: 'POST',
-        data: {
-          id: userId,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: 8,
           from: {
             x: colIndex,
             y: rowIndex,
           },
-        },
+        }),
       });
 
-      if (res === 'error') {
+      const data = await res.json();
+      if (data === 'error') {
         console.error('Error fetching valid moves');
         return;
       }
 
-      setValidMoves(res?.valid_moves || []);
+      setValidMoves(data?.valid_moves || []);
     } catch (error) {
       console.error('Error fetching valid moves:', error);
     }
