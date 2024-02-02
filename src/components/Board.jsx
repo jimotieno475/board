@@ -27,10 +27,10 @@ function Board() {
   },);
 
   const init = async () => {
-    if (!userId) {
-      navigate("/login");
-      return;
-    }
+    // if (!userId) {
+    //   navigate("/login");
+    //   return;
+    // }
     let res = await request({
       url: `board/1`,
       method: "GET",
